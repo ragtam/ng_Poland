@@ -94,3 +94,89 @@ tapResponse, for catching errors in streams
 
 discord.gg/angular (official one)
 discord.gg/ngrx
+
+# Michael Hladky | Fully Zone-Less - High-Performance Angular applications in post IVY
+
+npm i rx-angular/state
+
+rx-angular/template
+
+async & onPush everywhere?
+
+push pipe, let pipe, rxLet
+
+from application rendering to component rendering
+
+# Minko Gechev - Angular performance profiling patterns
+
+youtu.be/ybNj-id0kjY | Minko`s talk on performance
+
+## Profiling an application:
+
+-   we need to be in production build
+-   no mangle, disable mangling: NG_BUILD_MANGLE = false ng build --prod
+-   no browser extension enabled, they might some noise to the profiler, open in incognito mode
+
+performance tab, record. Flame Graph vs Flame charts
+
+rendering on demand: intersectionObserver api
+
+move expensive calls to web workers
+
+# Dhananjay Kumar - Simplifying Dependency Injection in Angular
+
+tt: @debug_mode
+
+static property is shared across objects. 5 times constructor calls on service of the same type. One property that can sum up the number of calls
+
+**scenario 1:**: we have a service, but its not injected anywhere:
+Service provided in providers in module, is included although its not used, not injected anywhere. As opposed if we used provided in root, its tree shakeable, so it won`t be included in the bundle.
+
+providers array, **useExisting** instead of **useClass**
+
+**scenario 2:** Lazy loaded module service provided in app module
+There will be one instance of a service
+
+# Bonnie Brennan Sander Elias - You Don't Know Stack
+
+queue and stack.
+
+task que needs to finish once we can start doing anything else. Once its done, its gone, and new one gets created. Once task queue is started, we can`t add anything to that
+
+## if you set 0 on set timeout, it sets to 4ms
+
+# Santosh Yadav - Performance Optimization for Angular Apps
+
+use track by, apart from performance improvements, it`ll prevent rerender, if list is unchanged
+
+guess parser - load modules based on user interaction
+
+avoid a shared module
+
+source-map-explorer
+
+ng add @ngx-bundlders/analyze
+
+---
+
+use budgets
+
+use strict mode in angular
+
+-- tree shakable libs
+instead of a single entry point, add a secondary one, by ng-packagr or bazel
+
+common js are not tree shakable. angular 10 will throw a warning that commonjs is used
+s
+
+use cdn, decrease server load, low latency, high availability.
+
+use prod and use gzip minification ( have to be done on server side)
+
+# Nir Kaufman - Angular as a meta-framework: Extend and abstract it for your needs.
+
+3rd party libraries that manipulate the dom, like adding tooltips for instance, might trigger change detection. This might be a good idea to wrap 3rd party around a directive, that invokes a function from
+
+# Wassim Chegham - From design to code
+
+xLayers: SketchApp design into any framework
