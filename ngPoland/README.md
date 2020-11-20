@@ -1,3 +1,11 @@
+# Kamil Gałek - Small fixes for huge performance problems
+
+go to his github and go through pull requests in galczo5/perf2020
+
+[his repo from conference](https://github.com/galczo5/perf2020)
+
+**A MUST !!!**
+
 # Madfred Steyer | Angular future with IVY
 
 Angular private APIs:
@@ -183,12 +191,6 @@ use prod and use gzip minification ( have to be done on server side)
 # Wassim Chegham - From design to code
 
 xLayers: SketchApp design into any framework
-
-# Kamil Gałek - Small fixes for huge performance problems
-
-go to his github and go through pull requests in galczo5/perf2020
-
-[his repo from conference](https://github.com/galczo5/perf2020)
 
 # Robert Willemelis | ~920 Bytes: Creating the smallest Angular App in the world
 
