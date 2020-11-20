@@ -344,3 +344,21 @@ exposes: {
 This tells webpack that it will have this chunk dynamically. So its no longer necessary at compile time.
 
 We can share libraries. But HOW TO SHARE A MODULE?!?!?!
+
+Angular CLI is delegating to builder to build application. There is a default implementation of a builder, but we need to delegate our custom buidler that will handle delegation.
+
+```
+ng add @angular-architects/module-federation
+```
+
+generates a skeleton, installs custom builder
+
+creates webpack.config.js, webpack.prod.config.js and updates angular.json
+
+in package json we need to add resolutions to start using webpack 5
+
+d.ts file so that typescript did not complain about not existing module:
+
+```
+export module 'mfe1/Module' // but we could 'mfe1/*' to say that everything that starts with mfe1 is fine
+```
