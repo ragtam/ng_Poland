@@ -203,7 +203,7 @@ offline first, offline service worker ( sits between a browser and a network)
 
 # Maciej Czerwiakowski - Performance behaviors
 
-# JS POLAND
+# === JS POLAND ===
 
 # Ruben Bridgewater | Demystifying Memory Leaks in JavaScript
 
@@ -218,3 +218,101 @@ The cheapest fastest and most reliable components are not there
 Stack - fast, automatically managed, function calls
 
 Heap - main memory of app, our strings numbers
+
+Heap memory v8:
+
+-   young generation: small, only new objects, frequent scavenges. Not lasting for long time
+-   intermediate generation
+-   old generation: mark sweep (algorithm for freeing memory)
+
+Garbage collection problems:
+
+-   Typed arrays are more efficient
+
+-   we need to close file descriptors explicitly. When reading a file for instance.
+
+-   Reading big data in memory. Its better to fs.createReadStream, instead of reading a whole file.
+
+-   long strings:
+    let longStr = "0".repeat(1_000_000)
+    const leak = longString.slice(0, 20)
+
+    we are going to have a memory leak there, what about rest of the characters?
+
+    Concat might not always create new string, it might reference the other.
+
+## how to detect and fix memory leaks?
+
+tools / flags
+--inspect --trace-gc --abort-on-uncaught-exception llnode
+
+# Josh Goldberg | Super Strength ESLint
+
+ESLint - statically analyzes JS & TS for defects
+Autofixes defects
+
+static analysis - lint
+dynamic analysys - tests
+telemetry - feedback from users?
+
+```
+npm i eslint --save-dev
+npx eslint --init
+```
+
+## Prettier
+
+formatter !== linter
+prettier is about code formatting, its faster at that
+**dont use linter as code formatter**
+
+eslint-plugin-prettier. Tells eslint to switch off rules that are going to overlap wit prettier
+
+## AST
+
+Abstract Syntax Tree
+bare bones tree reporesentation of a source file. Each section of a file represented as an object
+
+```
+console.log("hi!")
+
+- member expression ( console.log )
+    - identifier ( console )
+    - identifier ( log )
+- literal ( "hi" )
+
+```
+
+lint takes our AST, applies its rules, returns new AST
+
+# Michael Hladky | A deep dive into RxJS subjects
+
+!!! GOTTA WATCH FULL PRESENTATION
+
+Subject expose next complete, error, as public api. Whis is what is hidden on Observable. Subject **Its HOT all the time**.
+
+Producer in observable is **inside**, in Subject its **outside**.
+
+Observable one producer one subscriber
+Subject one producer, several subscribers (multicasting)
+
+@Lamis Chebbi talk on subjects
+
+Subjects:
+
+-   BehaviourSubject
+    Forwards to multiple observers, needs to have initial value, replays latest value to new subscribers. New values are cached.
+    It forwards a completion. If we subscribe to completed subject, it forwards completion.
+
+-   ReplaySubject
+    It informs us about whole history of a producer. Behaviour subject cached one value, ReplaySubject caches all values in array.
+    If it completes and someone resubscribes to it? We will receive full history of a subject, and then reemits completion.
+    We can set a **buffer size** on ReplaySubject. Size of cache array.
+    **Window time** lets assign a lifetime to every single value. We can say that cache item lifespan is 5ms for instance.
+    Good for history notifications
+
+-   AsyncSubject
+    Only if it completes, it emits last value.
+    Where can we use?
+
+What happens if we subscribe to already to completed Subject. It Completes again
