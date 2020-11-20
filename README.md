@@ -362,3 +362,127 @@ d.ts file so that typescript did not complain about not existing module:
 ```
 export module 'mfe1/Module' // but we could 'mfe1/*' to say that everything that starts with mfe1 is fine
 ```
+
+# Christoffer Noring | Svelte, the invisible SPA framework
+
+@chris_noring
+
+The why?
+
+-   less boilerplate
+-   no virtual dom
+-   no script as a dependency. It compiles to the state where its a vanilla JS
+
+what it does?
+
+-   can swap out individual components or whole app
+-   we mostly need to learn HTML, CSS, JS
+-   one component per file
+-   styles scoped by default
+-   input props, watching changes, events
+
+**Its invisible**
+
+```
+<script>
+    let name = 'world'
+</script>
+
+<h1>{name}</h1>
+```
+
+on the basis of that it generates vanilla js
+
+svelte.dev => interactive tutorial
+
+```
+npx degit sveltejs/template hello-app
+npm install
+npm run dev
+```
+
+PRETTY FAST, 2 sec to scaffold, 2 sec to start the hello world app
+
+```
+<button on:click={ourFun}>
+```
+
+but, no string sanitization
+
+## Components
+
+one component does one thing
+
+```
+<style>
+
+</style>
+
+<script>
+let src = "somesrc.jpg"
+</script>
+
+<h1></h1>
+<img src = {scr}>
+
+// in another component
+
+import Nested from './nested.svelte'
+
+```
+
+deta down from parent to child
+
+events from child to parent
+
+```
+//component input
+
+export let answer;
+
+<Nested answer="42" />
+
+```
+
+## Component output
+
+createEventDispatcher, dispatch event by name and with a payload, handle event
+
+```
+let dispatcher = createEventDispatcher()
+
+dispatcher.dispatch('message', { payloadProp: 'hello' })
+
+<Inner  on:message={handleMessageFromInner} />
+
+// if we need to just forward a message from inner
+
+<Inner on:message />
+
+// and on the very outer we just grab the ordinary way
+```
+
+## Directives
+
+```
+// if
+{#if user.loggedIn}
+<p>text</p>
+
+
+// for loops
+{#each todos as todo}
+    <div>some div</div>
+{/each}
+
+// await
+{#await promise}
+    <p>its loading</p>
+{:then data}
+    <p>data loaded {data}</p>
+
+```
+
+## Testing
+
+testing happens on the surface, JEST, different paradigm
