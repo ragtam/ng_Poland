@@ -180,3 +180,41 @@ use prod and use gzip minification ( have to be done on server side)
 # Wassim Chegham - From design to code
 
 xLayers: SketchApp design into any framework
+
+# Kamil Gałek - Small fixes for huge performance problems
+
+go to his github and go through pull requests in galczo5/perf2020
+
+https://github.com/galczo5/perf2020
+
+# Robert Willemelis - ~920 Bytes - Creating the smallest Angular App in the world
+
+emojis for css classes?!?!?!
+
+-   minifiers do better job
+
+-   unused bytes
+
+willi84 github, ng bundle optimizer
+
+# Gerard Sans - Offline-first made easy with GraphQL and Amplify DataStore
+
+offline first, offline service worker ( sits between a browser and a network)
+
+# Maciej Czerwiakowski - Performance behaviors
+
+# JS POLAND
+
+# Ruben Bridgewater | Demystifying Memory Leaks in JavaScript
+
+memory leak, when a computer program incorrectly manages mamory, in a way then when is is no loger needed, its not released
+
+Mamory usage should not grow, the line of memory usage should be flat, it might go up, but should go back again.
+
+The cheapest fastest and most reliable components are not there
+
+## Stack vs Heap
+
+Stack - fast, automatically managed, function calls
+
+Heap - main memory of app, our strings numbers
