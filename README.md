@@ -1,3 +1,9 @@
+# URLS:
+
+custom-elements-everywhere.com
+Josh Comeau`s operator lookup site
+https://p5js.org/
+
 # Madfred Steyer | Angular future with IVY
 
 Angular private APIs:
@@ -486,3 +492,27 @@ dispatcher.dispatch('message', { payloadProp: 'hello' })
 ## Testing
 
 testing happens on the surface, JEST, different paradigm
+
+# Minko Gechev | Scaled Web Development
+
+source maps explorer to understand the bundles
+
+configure size bugdets
+
+lighthouse ci, add that as a part of ci
+
+Ng Module are for h
+
+Incremental builds: Bazel style
+
+# Valentin Kononov | Runtime Type Safety in Typescript
+
+to be checked in the console:
+
+```
+> '5' - 3
+> '5' + 3
+> '5' + - '2'
+> 5 + { v: 2 }
+> 5 - { v: 2 }
+```
