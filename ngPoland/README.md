@@ -20,7 +20,7 @@ Right now **IVY** is transforming ngModules into factory functions.
 
 zone.js
 
--   KEY TO automatic change detection
+-   kay to automatic change detection
 -   monkey patches all browser objects
 
 downsides:
@@ -32,11 +32,6 @@ downsides:
 zone.js is going to be optional, see angular.io/guide/roadmap
 
 ivy is introducing higher order components
-
-from workshop:
-http://workshops.angulararchitects.io/ms/f9bc9634-a993-4ab0-acd1-926fe8a4064d/module_federation.html
-https://github.com/manfredsteyer/ngx-build-plus
-https://www.angulararchitects.io/aktuelles/the-microfrontend-revolution-module-federation-in-webpack-5/
 
 # Alex | @ngrx/component-store
 
@@ -113,7 +108,7 @@ push pipe, let pipe, rxLet
 
 from application rendering to component rendering
 
-# Minko Gechev - Angular performance profiling patterns
+# Minko Gechev | Angular performance profiling patterns
 
 youtu.be/ybNj-id0kjY | Minko`s talk on performance
 
@@ -129,7 +124,7 @@ rendering on demand: intersectionObserver api
 
 move expensive calls to web workers
 
-# Dhananjay Kumar - Simplifying Dependency Injection in Angular
+# Dhananjay Kumar | Simplifying Dependency Injection in Angular
 
 tt: @debug_mode
 
@@ -149,9 +144,9 @@ queue and stack.
 
 task que needs to finish once we can start doing anything else. Once its done, its gone, and new one gets created. Once task queue is started, we can`t add anything to that
 
-## if you set 0 on set timeout, it sets to 4ms
+**if you set 0 on set timeout, it sets to 4ms**
 
-# Santosh Yadav - Performance Optimization for Angular Apps
+# Santosh Yadav | Performance Optimization for Angular Apps
 
 use track by, apart from performance improvements, it`ll prevent rerender, if list is unchanged
 
@@ -181,7 +176,7 @@ use cdn, decrease server load, low latency, high availability.
 
 use prod and use gzip minification ( have to be done on server side)
 
-# Nir Kaufman - Angular as a meta-framework: Extend and abstract it for your needs.
+# Nir Kaufman | Angular as a meta-framework: Extend and abstract it for your needs.
 
 3rd party libraries that manipulate the dom, like adding tooltips for instance, might trigger change detection. This might be a good idea to wrap 3rd party around a directive, that invokes a function from
 
@@ -193,9 +188,9 @@ xLayers: SketchApp design into any framework
 
 go to his github and go through pull requests in galczo5/perf2020
 
-https://github.com/galczo5/perf2020
+[his repo from conference](https://github.com/galczo5/perf2020)
 
-# Robert Willemelis - ~920 Bytes - Creating the smallest Angular App in the world
+# Robert Willemelis | ~920 Bytes: Creating the smallest Angular App in the world
 
 emojis for css classes?!?!?!
 
@@ -205,8 +200,8 @@ emojis for css classes?!?!?!
 
 willi84 github, ng bundle optimizer
 
-# Gerard Sans - Offline-first made easy with GraphQL and Amplify DataStore
+# Gerard Sans | Offline-first made easy with GraphQL and Amplify DataStore
 
 offline first, offline service worker ( sits between a browser and a network)
 
-# Maciej Czerwiakowski - Performance behaviors
+# Maciej Czerwiakowski | Performance behaviors

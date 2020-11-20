@@ -445,3 +445,8 @@ sharedWorker.port.postMessage(['data'])
 ## Time complexity | Sorting
 
 merge sorting, external sort
+
+WASM - assembly script
+use web worker for wasm initialisation
+
+bobrov.dev
