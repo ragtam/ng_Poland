@@ -2,7 +2,7 @@
 
 custom-elements-everywhere.com
 Josh Comeau`s operator lookup site
-https://p5js.org/
+https://p5js.org/ // canvas stuff
 
 # Madfred Steyer | Angular future with IVY
 
@@ -10,7 +10,9 @@ Angular private APIs:
 
 passing inputs through url param, without router
 
+```
 routes: [{ path: '', component: withRoute(ComponentName) }]
+```
 
 usually we would have to use Activated Route, and grab url params from there.
 
@@ -18,7 +20,7 @@ Barrel imports and libraries are going to be used instead of ngModules.
 
 They are going to be optional in guture.
 
-Right now IVY is transforming ngModules into factory functions.
+Right now **IVY** is transforming ngModules into factory functions.
 
 ---
 
@@ -46,9 +48,11 @@ https://www.angulararchitects.io/aktuelles/the-microfrontend-revolution-module-f
 
 property driling, passing inputs through several components
 
+```
 CartService {
 readonly cartItems\$ = this.getCartProducts().pipe(shareReplay(1))
 }
+```
 
 component subscribes to readonly prop from the service
 
@@ -59,7 +63,7 @@ Service with behaviour subject.
 State can be kept in the service, we have a private behaviour Subject, we provide cartItems\$ readonly getter, behaviour subject as observable.
 We have add, remove product that invoke subject`s next method on bahaviour subject. Whenever someone manipulates on data, we get information about it.
 
-But there might be a RACE CONDITION there, if two adds were clicked, but the first one took longer than the second one. Bug difficult to find.
+But there might be a **RACE CONDITION** there, if two adds were clicked, but the first one took longer than the second one. Bug difficult to find.
 
 **@ngrx/component-store** is a standalone lib for state management. it can replace a service like the one above.
 
@@ -103,7 +107,9 @@ discord.gg/ngrx
 
 # Michael Hladky | Fully Zone-Less - High-Performance Angular applications in post IVY
 
+```
 npm i rx-angular/state
+```
 
 rx-angular/template
 
@@ -159,9 +165,11 @@ guess parser - load modules based on user interaction
 
 avoid a shared module
 
-source-map-explorer
+**source-map-explorer** to analyze bundles
 
+```
 ng add @ngx-bundlders/analyze
+```
 
 ---
 
@@ -172,7 +180,7 @@ use strict mode in angular
 -- tree shakable libs
 instead of a single entry point, add a secondary one, by ng-packagr or bazel
 
-common js are not tree shakable. angular 10 will throw a warning that commonjs is used
+commonjs are not tree shakable. angular 10 will throw a warning that commonjs is used
 s
 
 use cdn, decrease server load, low latency, high availability.
@@ -516,3 +524,5 @@ to be checked in the console:
 > 5 + { v: 2 }
 > 5 - { v: 2 }
 ```
+
+npm i ts-stronger-types
