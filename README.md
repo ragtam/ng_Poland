@@ -12,6 +12,10 @@
 
 [module federation from blog](https://www.angulararchitects.io/aktuelles/the-microfrontend-revolution-module-federation-in-webpack-5/)
 
+[@angular-architects/ddd](https://www.npmjs.com/package/@angular-architects/ddd)
+
+[nxPlugins](https://nx.dev/latest/angular/plugins/nx-plugin/overview)
+
 ## webpack 5 module federation
 
 [In depth article by Zack Jackson](https://indepth.dev/webpack-5-module-federation-a-game-changer-in-javascript-architecture)
