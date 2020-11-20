@@ -526,3 +526,139 @@ to be checked in the console:
 ```
 
 npm i ts-stronger-types
+
+# Sam Bellen | Knock knock, who’s there
+
+jwt.io
+jwt.sambego.tech
+
+# Henri Helvetica | Moving Pictures
+
+bit.ly/movingpictures_jspoland
+
+## into the future of web media
+
+image formats in order:
+
+gif =>
+png (possibility for transparency) =>
+joint photographic experts group (alpha channel possible) =>
+scalable vector graphic (scallable)
+
+each of them is almost 20 year old, together 104 years old :D
+
+## foundation of the net is compression
+
+without a compression 12 megapixel image would take 36 megs of storage
+
+heif - format by apple, was not issued because of patents
+
+jpg is most popular format.
+
+so we need high performant image formats:
+
+-   jpeg xl: pik and fuif formats. alpha, loosless, animation, modern compression, responsive, royalty free, **close to final stage**
+-   avif: comes from a video format. Alliance for Open Media. Chrome and opera only. Firefox needs to be configured
+-   webp: 10yrs old, made for web, transparency, animations, going to replace png. Supported across the browsers
+
+## tooling for webp
+
+squoosh.app
+gimp
+photoshop plugin
+
+-   webp2 is under development. 30% better compression
+
+# Nir Kaufman | There are no bad practices! How to code for humans - Not computers
+
+url: nir.life
+
+# Vitalii Bobrov | Job Behind the Scene: Web Worker
+
+js is single threaded, but we can paralellize it using web workers, shared workers
+
+## Workers limitations
+
+-   makes copy of data
+-   have no direct access to dom and global functions
+-   communicates via messages
+
+How to use web worker
+
+```
+const worker = new Worker('path/to/worker.js')
+```
+
+its even supported by IE10
+
+main thread:
+
+```
+worker.postMessage('data')
+worker.addEventListener(
+    'message',
+    (event: MessageEvent) => {
+        console.log(event.data)
+    }
+)
+```
+
+worker thread:
+
+```
+worker.addEventListener(
+    'message',
+    (event: MessageEvent) => {
+        console.log(event.data)
+    }
+)
+
+postMessage(data)
+```
+
+We can`t pass a reference. We should use **buffers** for posting data.
+
+```
+const buffer = new Uint8Array(data);
+worker.postMessage(buffer, [buffer])
+
+addEventListener( 'message', {data} )
+```
+
+This way we are saving a lot of memory. It will save copying of elements.
+
+## Shared array buffers
+
+Can be shared across Workers. DOPE. It`s not green in all the browsers.
+
+Pool of workers:
+
+```
+let workersPool = []
+
+for( let i = 0; i < navigator.hardwareConcurrency; i++ ) {
+    let new Worker = {
+        worker: new Worker('./some/path/to/worker.js'),
+        inUse: false
+    };
+    worlersPool.push(newWorker);
+}
+```
+
+We should not exceed this number, hardwareConcurrency, if we do, worker will just have to wait for a thread to be free.
+
+**Thread !== Code**
+
+## Shared Worker
+
+can be used by a few tabs of a browser of the same origin. Data persists between tabs. We need to set port.
+
+```
+const sharedWorker = new SharedWorker('')
+
+sharedWorker.port.postMessage(['data'])
+```
+
+## helper libraries
+
+-   comlink: simplifies worker communication. Proxy object for worker.
