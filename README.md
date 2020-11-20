@@ -316,3 +316,31 @@ Subjects:
     Where can we use?
 
 What happens if we subscribe to already to completed Subject. It Completes again
+
+# Manfred Steyer | The Microfrontend Revolution: Using Webpack 5 Module Federation
+
+Separately compiled, built and deployed applications
+
+```
+const Comp = await import('https://other-app/xyz')
+```
+
+the above assumes its there at compile/build time. Even lazy parts must be there. This would be spitted as separate webpack bundle.
+
+```
+// shell:
+import('mfe1/Cmp') // Cmp is what is exposed as property in exposes obj of a remote
+
+remotes: {
+mfe1: 'mfe1'
+}
+
+// remote:
+exposes: {
+'./Cmp': './my-cmp'
+}
+```
+
+This tells webpack that it will have this chunk dynamically. So its no longer necessary at compile time.
+
+We can share libraries. But HOW TO SHARE A MODULE?!?!?!
