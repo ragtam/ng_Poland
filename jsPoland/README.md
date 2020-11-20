@@ -450,3 +450,144 @@ WASM - assembly script
 use web worker for wasm initialisation
 
 bobrov.dev
+
+# Dhananjay Kumar | Simplifying prototype in JavaScript
+
+twitter: @debug_mode
+
+## what is this and **proto**
+
+Depends on how we are calling the function
+
+```
+function Product() {
+    console.log(this)
+    return 9
+}
+
+let a = Product() // FUNCTION INVOCATION PATTERN. this way this is global object
+console.log(a)
+
+let b = new Product() // CONSTRUCTOR INVOCATION PATTERN: value of this is newly created object
+console.log(b) // if skipps return, constructor call, and returns newly created object
+
+let c
+```
+
+what is this? that depends on call site
+
+```
+var Dog = {
+    name: 'foo',
+    eat: function() {
+        console.log(this)
+    }
+}
+
+Dog.eat() // METHOD INVOCATION PATTERN. this.is going to be referencing Dog: . Object before a dot.
+```
+
+Developer is not controlling the value of `this`
+
+```
+var Cat = {
+    name: 'my-cat'
+}
+
+var Dog = {
+    name: 'foo',
+    eat: function() {
+        console.log(this)
+    }
+}
+
+Dog.eat.call(Cat) // INDIRECT INVOCATION PATTERN. `this` is the first argument in the function call
+
+```
+
+---
+
+```
+var Animal = {
+    name: 'foo',
+    age: 9
+}
+
+var Dog = {
+    owner: 'koo',
+    canRun: true
+}
+
+// if we want to link dog to animal
+
+Dog.__proto__ = Animal
+
+
+for(var p in Dog) {
+    console.log(p); // it prints Dog`s and Animal`s properties
+}
+
+console.log(Object.keys(Dog)) // will return only Dog`s properties
+
+Object.defineProperty(Dog, 'owner', { enumareble: false })
+
+// we will see this proprety neither in for nor in object.keys
+```
+
+## how we can create objects in JS
+
+4 ways:
+
+```
+// object literal
+var dog = {}
+
+// object create
+var dob = Object.create({}) // we can add prototype object
+```
+
+```
+function Product(title, price) {
+    this.title = title;
+    this.price = price;
+}
+
+var p1 = new Product('p1', 90)
+var p2 = new Product('p2', 30)
+
+console.log(p1.constructor) // product
+console.log(p2.constructor)
+
+// we can go to constructor from p1 and p2 objects.
+
+console.log(Product.prototype) // {}
+
+Product.prototype.color = 'blue'
+
+console.log(p1.color)
+console.log(p2.color)
+
+// p1, p2 do not have color property, but JS goes up the prototype chain, to find this property.
+// This is because they are linked to that prototype
+```
+
+Every function has its prototype. JS first tries to find it in P1 object, if its not there, it will look in prototype, if finds it there, returns it, of not found, returns undefined.
+
+```
+p1.constructor.prototype == p2.constructor.prototype // true
+
+p1.constructor.prototype == p1.__proto__ // true
+
+```
+
+js does that for reading properties, for setting it will alter specific object
+
+```
+p1.color = 'red'
+```
+
+it will not go to prototype chain
+
+# Alexandru Daniel | Roman Block me if you can!
+
+blocking ads that block ad blockers blocking them
